@@ -1,6 +1,10 @@
-<div class="center jumbotron">
-  <div class="text-center">
-    <h1>Welcome to the Q Space</h1>
+<% if logged_in?%>
+  <p>ログイン完了ユーザー：<%=current_user.name%></p>
+<%else%>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>Welcome to the Q Space</h1>
+    </div>
+    <%=link_to'Signup',signup_path%>
   </div>
-  <%=link_to'Signup',signup_path%>
-</div>
+<%end%>
