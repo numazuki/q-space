@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: q_space_production
   username: q_space
   password: <%= ENV['Q_SPACE_DATABASE_PASSWORD'] %>
