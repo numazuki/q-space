@@ -1,0 +1,46 @@
+<div class="card mr-4 ml-4">
+  <div class="d-flex flex-row card-body">
+    <div class="col-3 text-center">
+      <img class="rounded" src="<%= gravatar_url(@question.user, { size: 50 }) %>" alt="">
+      <p class="mt-4"><%=@question.user.name%></p>
+    </div>
+    <div class="col-9">
+      <p class="shadow-sm p-3 bg-light rounded align-baseline">questionタイトル：  <%=@question.title%></p>
+      <p class=""><%=simple_format(@question.content)%></p>
+    </div>
+  </div>
+</div>
+
+<div class="mt-5">
+  <span class="shadow-sm p-3 mb-5 mt-5 bg-light rounded">回答一覧</span>
+
+  <div class="mt-4">
+    <% @answers.each do |answer| %>
+      <div class="border ml-5 mr-5 p-3 row">
+        <div class="col-3 text-center">
+          <img class="rounded" src="<%= gravatar_url(answer.user, { size: 50 }) %>" alt="">
+          <p class="mt-4"><%=answer.user.name%></p>
+        </div class="col-9">
+         <%= simple_format(answer.content) %>
+      </div>
+      <%if @question.user_id == current_user.id%>
+        <%=render 'thanks/thanks',answer: answer%>
+      <%end%>
+    <% end %>
+  </div>
+  
+  <%unless @question.user_id == current_user.id%>  
+    <div class="mt-5">
+      <span class="shadow-sm p-3 bg-light rounded">回答フォーム</span>
+      <div class="mt-4 ml-5 mr-5">
+        <%=form_with(model: [@question,@answer],local: true) do |f|%>
+          <%= render 'layouts/error_messages',model: f.object%>
+          <%= hidden_field_tag :question_id, @question.id %>
+          <%= f.text_area :content,class: 'form-control'%>
+          <%= f.submit '回答する', class: 'btn btn-outline-primary mt-4' %>
+        <%end%>        
+      </div>
+    </div>
+  <%end%>
+  
+</div>

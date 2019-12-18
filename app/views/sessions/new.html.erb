@@ -1,8 +1,8 @@
 <div>
-  <h1>Login</h1>
+  <span class="shadow-sm p-3 mb-5 mt-5 bg-light rounded">Login</span>
 </div>
-<div>
-  <div>
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
     <%= form_with(url: login_path,scope: :session,local: true) do |f|%>
       <div class="form-group">
         <%= f.label :email, 'Email' %>
@@ -16,6 +16,8 @@
 
       <%= f.submit 'Log in', class: 'btn btn-primary btn-block' %>
     <% end %>
-    <p>new user?<%= link_to "Signup",signup_path%></p>
+    <div class="mt-4 text-center">
+      <p>new user?  <%= link_to "Signup",signup_path%></p>
+    </div>
   </div>
 </div>

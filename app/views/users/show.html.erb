@@ -1,12 +1,30 @@
 <div>
-  <div class="user">
-    <div>
-      test
-    </div>
+  <%= render 'users/introduces'%>
+</div>
+<div class="border-top">
+  <div class="mt-5 mb-4">
+    <span class="shadow-sm p-3 bg-light rounded">質問一覧</span>
   </div>
-  <div class="questions">
-    <div>
-      tests
-    </div>
+  <div class="row">
+    <ul class="col-10 offset-1">
+       <%@questions.each do |question|%>
+         <li class="card mt-3">
+           <div class="card-header">
+             <span>タイトル：  <%=link_to question.title,question_path(question)%><span>
+           </div>
+           <div class=card-body>
+             <p>内容</p>
+             <p class="card-text">
+               <%=simple_format(question.content)%>
+             </p>
+             <div class="float-right mt-2">
+               <span>回答数：<%=question.answers.count%></span>
+               <span class="ml-5"><%=link_to '削除する',question,method: :delete if @user == current_user%></span>
+             </div>
+           </div>
+         </li>
+      <%end%>
+    </ul>
   </div>
 </div>
+

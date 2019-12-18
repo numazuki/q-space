@@ -1,0 +1,23 @@
+<div class="mb-4">
+  <span class="shadow-sm p-3 bg-light rounded">Thanks一覧</span>
+</div>
+
+<div class="mt-5 ml-4 mr-4">
+  <div class="mr-5 ml-5">
+    <%@questions.each do |question|%>
+      <div class="row border mt-3 text-center">
+        <div class="col-9 border-right">
+          <%=link_to question.title,question_path(question)%>
+        </div>
+        <div class="col-3">
+          <%=link_to question.user.name,user_path(question.user.id)%>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,22 @@
+<div class="mt-5">
+  <span class="shadow-sm p-3 mb-5 mt-5 bg-light rounded">質問フォーム</span>
+</div>
+
+<div class="mt-5">
+  <div>
+    <p><%=current_user.name%>さん</p>
+    <%= form_with(model: @question,local: true) do |f|%>
+      <div class="form-group">
+        <%= f.label :title, '質問タイトル' %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      <div class="form-group mt-4">
+        <%= f.label :content, '質問内容' %>
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>
+      <div class="form-group mt-4">
+        <%= f.submit '投稿する', class: 'btn btn-outline-primary' %>
+      </div>
+    <%end%>
+  </div>
+</div>
