@@ -2,7 +2,7 @@
   <div class="d-flex flex-row card-body">
     <div class="col-3 text-center">
       <img class="rounded" src="<%= gravatar_url(@question.user, { size: 50 }) %>" alt="">
-      <p class="mt-4"><%=@question.user.name%></p>
+      <p class="mt-4"><%=link_to @question.user.name,user_path(@question.user)%></p>
     </div>
     <div class="col-9">
       <p class="shadow-sm p-3 bg-light rounded align-baseline">Questionタイトル：  <%=@question.title%></p>
