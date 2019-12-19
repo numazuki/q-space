@@ -2,7 +2,7 @@
   <div>
     <div class="d-flex justify-content-around">
       <p><%=link_to 'あなたも質問してみよう!','questions/new',class:"btn btn-outline-primary font-weight-bold pl-4 pr-4"%></p>
-      <p><%= link_to 'User一覧',users_path,class:"btn btn-outline-primary"%></p>
+      <p><%= link_to 'ユーザー一覧',users_path,class:"btn btn-outline-primary"%></p>
     </div>
     <%=render 'questions/questions',questions: @questions %>
   </div>
@@ -13,7 +13,8 @@
     </div>
     
     <div class="text-center mt-4">
-      <h1>new user? <%=link_to'Signup!',signup_path%></h1>
+      <h1>Q Spaceをはじめよう！</h1>
+      <h1><%=link_to'Signup!',signup_path%></h1>
     </div>
   </div>
 <%end%>

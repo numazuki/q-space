@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :questions
-  has_many :answers
+  has_many :answers,dependent: :destroy
   has_many :answer_questions,through: :answers,source: :question
   has_many :thanks
   has_many :thank_answers,through: :thanks,source: :answer

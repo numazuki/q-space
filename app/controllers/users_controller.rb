@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @questions = @user.questions.order(id: :desc).page(params[:page]).per(5)
-    
+
     #count
     answers=@user.answers
     @thanks_count=Thank.where(answer_id: answers).count
@@ -31,11 +31,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user=User.find(params[:id])
+    @user=current_user
   end
 
   def update
-    @user=User.find(params[:id])
+    @user=current_user
     if @user.update(user_params)
       flash[:success]='変更しました'      
       redirect_to @user
@@ -47,8 +47,7 @@ class UsersController < ApplicationController
   
   def thanks
     @user=User.find(params[:id])
-    answers=@user.answers
-    thanks=Thank.where(answer_id: answers)
+    thanks=Thank.where(answer_id: @user.answers)
     q_id=thanks.pluck(:question_id).uniq
     @questions=Question.where(id: q_id)
   end
@@ -56,7 +55,7 @@ class UsersController < ApplicationController
   
   private
   def user_params
-    params.require(:user).permit(:name,:email,:password,:password_confirmation,:image,:introduce)
+    params.require(:user).permit(:name,:email,:password,:password_confirmation,:introduce)
   end
   
 end

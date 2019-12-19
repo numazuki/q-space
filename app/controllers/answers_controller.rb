@@ -6,10 +6,10 @@ class AnswersController < ApplicationController
     @answer = question.answers.build(answer_params)
     @answer.user_id = current_user.id
     if @answer.save
-      flash[:success]="まる"
+      flash[:success]="回答を送信しました"
       redirect_back(fallback_location: question_url(question.id))
     else
-      flash[:danger]="batu"
+      flash[:danger]="回答を送信できませんでした"
       redirect_to root_url
     end
   end

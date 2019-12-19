@@ -1,5 +1,5 @@
-<div>
-  <span class="shadow-sm p-3 mb-5 mt-5 bg-light rounded">Sign up</span>
+<div　class="text-center">
+  <span class="shadow-sm p-3 mb-5 mt-5 bg-light rounded">Q SpaceにSign upする</span>
 </div>
 <div class="row">
   <div class="col-sm-6 offset-sm-3">
@@ -7,34 +7,29 @@
     <%= form_with(model: @user, local: true) do |f| %>
     <%= render 'layouts/error_messages',model: f.object%>
       
-      <div>
-        <div class="form-group">
-          <%= f.label :name, 'Name' %>
-          <%= f.text_field :name, class: 'form-control' %>
-        </div>
-        <div> 
-          <%= f.label :image,'Image'%>
-          <%= f.file_field :image,class: 'form-control' %>
-        </div>
+      
+      <div class="form-group">
+        <%= f.label :name, '名前' %>
+        <%= f.text_field :name, class: 'form-control' %>
       </div>
       
       <div class='form-group'>
-        <%= f.label :introduce, 'introduce'%>
+        <%= f.label :introduce, '自己紹介'%>
         <%= f.text_field :introduce, class:"form-control"%>
       </div>
       
       <div class="form-group">
-        <%= f.label :email, 'Email' %>
+        <%= f.label :email, 'メール' %>
         <%= f.email_field :email, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password, 'Password' %>
+        <%= f.label :password, 'パスワード' %>
         <%= f.password_field :password, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password_confirmation, 'Confirmation' %>
+        <%= f.label :password_confirmation, 'パスワード確認' %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
 

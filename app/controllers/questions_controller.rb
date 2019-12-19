@@ -14,10 +14,10 @@ class QuestionsController < ApplicationController
   def create
     @question = current_user.questions.build(question_params)
     if @question.save
-      flash[:success] = "成功"
+      flash[:success] = "Questionを投稿しました"
       redirect_to root_url
     else
-      flash[:danger] = "失敗"
+      flash[:danger] = "Questionを投稿できませんでした"
       render :new
     end
   end
