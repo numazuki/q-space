@@ -6,6 +6,7 @@
   <div>
     <p><%=current_user.name%>さん</p>
     <%= form_with(model: @question,local: true) do |f|%>
+    <%= render 'layouts/error_messages',model: f.object%>
       <div class="form-group">
         <%= f.label :title, 'Questionタイトル' %>
         <%= f.text_field :title, class: 'form-control' %>

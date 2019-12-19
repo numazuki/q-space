@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
       redirect_back(fallback_location: question_url(question.id))
     else
       flash[:danger]="回答を送信できませんでした"
-      redirect_to root_url
+      redirect_back(fallback_location: question_url(question.id))
     end
   end
 

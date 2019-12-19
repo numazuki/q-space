@@ -19,7 +19,7 @@
              </p>
              <div class="float-right mt-2">
                <span>回答数：<%=question.answers.count%></span>
-               <span class="ml-5"><%=link_to '削除する',question,method: :delete if @user == current_user%></span>
+               <span class="ml-5"><%=link_to '削除する',question,method: :delete,data: { confirm: '本当に削除してよろしいですか？' } if @user == current_user%></span>
              </div>
            </div>
          </li>
