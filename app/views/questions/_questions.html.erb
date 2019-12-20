@@ -9,7 +9,7 @@
           <p class="mt-3"><%=link_to q.user.name,user_path(q.user.id)%></p>
         </div>
         <div class="col-9">
-          <h5><%=link_to q.title,question_path(q),class:"shadow-sm p-3 bg-light rounded stretched-link d-block"%></h5>
+          <h5 style="word-wrap: break-word"><%=link_to q.title,question_path(q),class:"shadow-sm p-3 bg-light rounded stretched-link d-block"%></h5>
           <div class="mt-3 text-right">
             <p class="">回答数：<%=q.answers.count%></p>
           </div>

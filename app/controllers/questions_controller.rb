@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :correct_user,only:[:destroy]
   def show
     @question = Question.find(params[:id])
-    @answers = @question.answers.order(id: :desc).page(params[:page])
+    @answers = @question.answers.order(id: :desc).page(params[:page]).per(10)
     @answer = @question.answers.build
   end
 

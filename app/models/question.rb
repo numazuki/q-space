@@ -7,6 +7,8 @@ class Question < ApplicationRecord
   has_many :answers,dependent: :destroy
   has_many :answer_users,through: :answers,source: :user,dependent: :destroy
   
-
+  def thanks?(answer)
+    self.user.thank_answers.include?(answer)
+  end
   
 end

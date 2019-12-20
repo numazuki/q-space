@@ -8,11 +8,11 @@
     <%= form_with(model: @question,local: true) do |f|%>
     <%= render 'layouts/error_messages',model: f.object%>
       <div class="form-group">
-        <%= f.label :title, 'Questionタイトル' %>
+        <%= f.label :title, '質問タイトル' %>
         <%= f.text_field :title, class: 'form-control' %>
       </div>
       <div class="form-group mt-4">
-        <%= f.label :content, 'Question内容' %>
+        <%= f.label :content, '質問内容' %>
         <%= f.text_area :content, class: 'form-control' %>
       </div>
       <div class="form-group mt-4">

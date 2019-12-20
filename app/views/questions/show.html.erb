@@ -6,7 +6,7 @@
     </div>
     <div class="col-9">
       <p class="shadow-sm p-3 bg-light rounded align-baseline">Questionタイトル：  <%=@question.title%></p>
-      <p class=""><%=simple_format(@question.content)%></p>
+      <p class="" style="word-wrap: break-word"><%=simple_format(@question.content)%></p>
     </div>
   </div>
 </div>
@@ -21,16 +21,19 @@
           <img class="rounded" src="<%= gravatar_url(answer.user, { size: 50 }) %>" alt="">
           <p class="mt-4"><%=answer.user.name%></p>
         </div class="col-9">
-        <div class="col-9">
-          <%= simple_format(answer.content) %>
-          <div class="mt-3 text-right mt-2">
+        <div class="col-9 ">
+          <span style="word-wrap: break-word"><%= simple_format(answer.content) %></span>
+          <div class="mt-4 text-right">
             <%if @question.user_id == current_user.id%>
               <%=render 'thanks/thanks',answer: answer%>
-            <%end%>               
+            <% elsif @question.thanks?(answer)%>
+              <span class="border border-primary rounded p-1 ">Thanks</span>
+            <%end%>             
           </div>
         </div>
       </div>
     <% end %>
+    <%=paginate @answers%>
   </div>
   
   <%unless @question.user_id == current_user.id%>  
@@ -38,7 +41,7 @@
       <span class="shadow-sm p-3 bg-light rounded">回答フォーム</span>
       <div class="mt-4 ml-5 mr-5">
         <%=form_with(model: [@question,@answer],local: true) do |f|%>
-          <%= render 'layouts/error_messages',model: f.object%>
+        <%= render 'layouts/error_messages',model: f.object%>
           <%= hidden_field_tag :question_id, @question.id %>
           <%= f.text_area :content,class: 'form-control'%>
           <%= f.submit '回答する', class: 'btn btn-outline-primary mt-4' %>
